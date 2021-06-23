@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize')
 const PersonModel = require('./models/person')
+const GameModel=require('./models/game')
+const PlatformModel=require('./models/platform')
 
 const sequelize = new Sequelize(process.env.DB_SCHEMA, process.env.DB_USER, process.env.DB_PASSWORD, {
     dialect: 'mysql',
@@ -13,6 +15,8 @@ const sequelize = new Sequelize(process.env.DB_SCHEMA, process.env.DB_USER, proc
 })
 
 const Person = PersonModel(sequelize, Sequelize)
+const Game = GameModel(sequelize, Sequelize)
+const Platform = PlatformModel(sequelize, Sequelize)
 
 sequelize.authenticate()
     .then(() => {
@@ -23,5 +27,7 @@ sequelize.authenticate()
     })
 
 module.exports = {
-    Person
+    Person,
+    Game,
+    Platform
 }
