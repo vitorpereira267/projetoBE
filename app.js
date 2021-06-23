@@ -6,6 +6,7 @@ var logger = require('morgan');
 var dotenv=require("dotenv")
 var flash = require('connect-flash');
 var session = require('express-session');
+
 var cors = require('cors');
 
 dotenv.config()
@@ -13,8 +14,12 @@ dotenv.config()
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var personRouter = require('./routes/person');
+
 var gameRouter = require('./routes/game');
 var platformRouter = require('./routes/platform');
+
+var apiRouter = require('./routes/api');
+
 
 var app = express();
 const port = 3000;
@@ -33,11 +38,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 app.use(cors());
 
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/person', personRouter);
 app.use('/game', gameRouter);
 app.use('/platform', platformRouter);
+app.use('/api', apiRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
