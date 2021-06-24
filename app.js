@@ -6,7 +6,6 @@ var logger = require('morgan');
 var dotenv=require("dotenv")
 var flash = require('connect-flash');
 var session = require('express-session');
-
 var cors = require('cors');
 
 dotenv.config()
@@ -34,9 +33,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
+//app.use(express.static(path.join(__dirname, 'public')));
+//app.use('/img/games', express.static('img/games'));
 app.use(flash());
 app.use(cors());
+
 
 
 

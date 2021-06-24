@@ -1,5 +1,6 @@
 const Game = require('../sequelize').Game
 
+
 exports.getGame = function (req, res, next) {
     Game.findAll()
         .then(result => {
@@ -17,3 +18,5 @@ exports.getGameID = function (req, res, next) {
             console.error("No game found", err)
         })
 }
+
+
