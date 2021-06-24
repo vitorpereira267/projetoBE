@@ -10,7 +10,6 @@ var cors=require('cors')
 dotenv.config()
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var personRouter = require('./routes/person');
 var apiRouter = require('./routes/api');
 
@@ -32,7 +31,6 @@ app.use(flash());
 app.use(cors())
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/person', personRouter);
 app.use('/api', apiRouter);
 

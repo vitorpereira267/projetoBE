@@ -3,7 +3,7 @@ const Person = require('../sequelize').Person
 exports.getPersons = function (req, res, next) {
     Person.findAll()
         .then(result => {
-            res.send('person', { title: 'Person', data: result });
+            res.send(result);
         })
 }
 
@@ -17,7 +17,7 @@ exports.postPersons = function (req, res, next) {
 }
 
 exports.deletePersons = function (req, res, next) {
-    if (req.query.id == undefined) {
+    if (req.query.users_ID == undefined) {
         res.send("User not found or doesn´t exist")
     }
     else {
@@ -32,6 +32,10 @@ exports.deletePersons = function (req, res, next) {
 }
 
 exports.putPersons = function (req, res, next) {
+    if (req.query.users_ID == undefined) {
+        res.send("User not found or doesn´t exist")
+    }
+    else{
     var details = req.body
     Person.update(details,
         {
@@ -42,4 +46,5 @@ exports.putPersons = function (req, res, next) {
         }).catch(err => {
             console.error("User not added", err)
         })
+    }
 }
