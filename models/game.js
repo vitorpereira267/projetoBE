@@ -30,6 +30,9 @@ module.exports = (sequelize, type) => {
         releaseDate: {
             type: type.DATE,
         },
+        image:{
+            type:type.TEXT,
+        }
     },{
         timestamps: false
     })
