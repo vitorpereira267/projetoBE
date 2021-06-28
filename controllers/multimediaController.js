@@ -12,7 +12,7 @@ exports.getMultimedia = function (req, res, next) {
     }).catch(err => {
         console.error("Nothing found", err)
     })
-
+}
 exports.getImages = function (req, res, next) {
     Multimedia.findOne({
         where:{
