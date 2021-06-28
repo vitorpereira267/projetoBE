@@ -11,6 +11,8 @@ module.exports = (sequelize, type) => {
         },
         multimedia: {
             type: type.TEXT,
+            type: type.STRING,
+
         },
     },{
         timestamps: false

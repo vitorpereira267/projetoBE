@@ -6,12 +6,18 @@ var logger = require('morgan');
 var dotenv=require("dotenv")
 var flash = require('connect-flash');
 var session = require('express-session');
-var cors=require('cors')
+var cors = require('cors');
+
 dotenv.config()
 
 var indexRouter = require('./routes/index');
 var personRouter = require('./routes/person');
+
+var gameRouter = require('./routes/game');
+var platformRouter = require('./routes/platform');
+
 var apiRouter = require('./routes/api');
+
 
 var app = express();
 const port = 3000;
@@ -26,18 +32,27 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
+//app.use(express.static(path.join(__dirname, 'public')));
+//app.use('/img/games', express.static('img/games'));
 app.use(flash());
-app.use(cors())
+app.use(cors());
+
+
+
 
 app.use('/', indexRouter);
 app.use('/person', personRouter);
+app.use('/game', gameRouter);
+app.use('/platform', platformRouter);
 app.use('/api', apiRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {
