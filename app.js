@@ -12,10 +12,8 @@ dotenv.config()
 
 var indexRouter = require('./routes/index');
 var personRouter = require('./routes/person');
-
 var gameRouter = require('./routes/game');
 var platformRouter = require('./routes/platform');
-
 var apiRouter = require('./routes/api');
 
 
